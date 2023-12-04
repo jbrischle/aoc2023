@@ -1,7 +1,8 @@
 import { readInput, readInputTest } from '../utils/utils';
+import * as path from 'path';
 
 const folder = __dirname;
-
+const fileName = path.basename(__dirname);
 A(readInputTest(folder, 'a'));
 A(readInput(folder));
 B(readInputTest(folder, 'b'));
@@ -23,8 +24,7 @@ function A(input: string) {
         numbers.push(Number(number));
     }
     const sum = numbers.reduce((acc, curr) => acc + curr, 0);
-    console.log(`1. Puzzle A: ${sum}`);
-    return sum;
+    console.log(`${fileName} A: ${sum}`);
 }
 
 function B(input: string) {
@@ -42,8 +42,7 @@ function B(input: string) {
         numbers.push(Number(number));
     }
     const sum = numbers.reduce((acc, curr) => acc + curr, 0);
-    console.log(`1. Puzzle B: ${sum}`);
-    return sum;
+    console.log(`${fileName} B: ${sum}`);
 }
 
 function getFirstNumber(line: string) {
