@@ -1,12 +1,14 @@
 import { readInput, readInputTest } from '../utils/utils';
-import * as path from 'path';
 
-const folder = __dirname;
-const fileName = path.basename(__dirname);
-A(readInputTest(folder, 'a'));
-A(readInput(folder));
-B(readInputTest(folder, 'b'));
-B(readInput(folder));
+test('solve puzzle 1 A', () => {
+    expect(A(readInputTest(__dirname, 'a'))).toBe(142);
+    expect(A(readInput(__dirname))).toBe(53386);
+});
+
+test('solve puzzle 1 B', () => {
+    expect(B(readInputTest(__dirname, 'b'))).toBe(281);
+    expect(B(readInput(__dirname))).toBe(53312);
+});
 
 function A(input: string) {
     const lines = input.split('\n');
@@ -23,8 +25,7 @@ function A(input: string) {
         const number = firstNumber.toString() + lastNumber.toString();
         numbers.push(Number(number));
     }
-    const sum = numbers.reduce((acc, curr) => acc + curr, 0);
-    console.log(`${fileName} A: ${sum}`);
+    return numbers.reduce((acc, curr) => acc + curr, 0);
 }
 
 function B(input: string) {
@@ -41,8 +42,7 @@ function B(input: string) {
         const number = firstNumber + lastNumber;
         numbers.push(Number(number));
     }
-    const sum = numbers.reduce((acc, curr) => acc + curr, 0);
-    console.log(`${fileName} B: ${sum}`);
+    return numbers.reduce((acc, curr) => acc + curr, 0);
 }
 
 function getFirstNumber(line: string) {
